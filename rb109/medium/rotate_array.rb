@@ -123,16 +123,28 @@ end
 
   A:
 
-    SET-
-
-    ITERATE-
-
-    IF-
-
-    ELSE-
-
-    PRINT-
+    SET- local 'arr' to an Array of each digit in the input Integer 
+      - reverse arr
+    ITERATE- through the array keep track of the index
+    EXECUTE= rotate_rightmost digit(arr, index)
+    RETURN- 'arr' 
 
   C:
 
 =end
+def max_rotation(number)
+  size = number.digits.size
+  temp = nil
+  while size > 0
+    temp = rotate_rightmost_digits(number, size) 
+    number = temp
+    size -= 1
+  end
+  temp
+end
+
+  p max_rotation(735291) == 321579
+  p max_rotation(3) == 3
+  p max_rotation(35) == 53
+  p max_rotation(105) == 15 # the leading zero gets dropped
+  p max_rotation(8_703_529_146) == 7_321_609_845
